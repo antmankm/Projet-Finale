@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/ui/Navbar"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "RAJAB KEUR MASSAR",
-  description: "Sama resturant",
+  description: "Sama restaurant",
 };
 
 export default function RootLayout({
@@ -24,7 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className={`${geistSans.variable} font-sans bg-background text-foreground`}>
+        {/* Barre de navigation */}
+        <Navbar />
+
+        {/* Contenu principal */}
         {children}
       </body>
     </html>
