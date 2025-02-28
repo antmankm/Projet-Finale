@@ -17,7 +17,7 @@ export default function AboutPage() {
               RAJAB KEUR MASSAR est bien plus qu'un simple restaurant. Nous sommes une passion, une tradition et une promesse de vous offrir une expérience culinaire inoubliable. Nos plats sont préparés avec des ingrédients frais et locaux, et notre équipe est dévouée à vous offrir un service exceptionnel.
             </p>
             <Link
-              href="/menu"
+              href="/food"
               className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-all transform hover:scale-105"
             >
               Découvrir notre menu
@@ -36,6 +36,62 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+        {/* Section Notre Équipe */}
+<section className="bg-neutral py-12">
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl font-bold text-white mb-8 text-center">Notre Équipe</h2>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Membre 1 */}
+      <div className="bg-card p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <div className="relative w-32 h-32 mb-4">
+          <Image
+            src="/team/chef1.jpg" // Chemin de la photo du chef
+            alt="Chef Marie"
+            fill
+            className="rounded-full object-cover"
+          />
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2">Chef Marie</h3>
+        <p className="text-lg text-white/80 mb-4 text-center">
+          Notre chef passionnée, spécialiste des saveurs locales.
+        </p>
+      </div>
+
+      {/* Membre 2 */}
+      <div className="bg-card p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <div className="relative w-32 h-32 mb-4">
+          <Image
+            src="/team/manager.jpg" // Chemin de la photo du manager
+            alt="Manager Abou"
+            fill
+            className="rounded-full object-cover"
+          />
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2">Manager Abou</h3>
+        <p className="text-lg text-white/80 mb-4 text-center">
+          Garant d'un service exceptionnel et d'une ambiance chaleureuse.
+        </p>
+      </div>
+
+      {/* Membre 3 */}
+      <div className="bg-card p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <div className="relative w-32 h-32 mb-4">
+          <Image
+            src="/team/sommelier.jpg" // Chemin de la photo du sommelier
+            alt="Sommelier Fatou"
+            fill
+            className="rounded-full object-cover"
+          />
+        </div>
+        <h3 className="text-xl font-bold text-white mb-2">Sommelier Fatou</h3>
+        <p className="text-lg text-white/80 mb-4 text-center">
+          Experte en accords mets-vins pour sublimer vos repas.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* Section Localisation */}
       <section className="bg-card py-12">
@@ -85,9 +141,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
+²
       {/* Section Témoignages */}
-      <section className="bg-muted py-12">
+      <section className="bg-neutral py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-white mb-8 text-center">Ce que disent nos clients</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -115,6 +171,11 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+
+    
+
+
 
       {/* Footer */}
       <footer className="bg-card py-8">

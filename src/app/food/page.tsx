@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaPhone, FaClock, FaShoppingCart } from "react-icons/fa";
 
 // Données des menus de nourriture (tu peux les remplacer par des données dynamiques)
 const foodItems = [
@@ -8,63 +9,63 @@ const foodItems = [
     id: 1,
     name: "Burger Classique",
     description: "Un délicieux burger avec du bœuf grillé, fromage, laitue, tomate et sauce maison.",
-    price: "10 €",
+    price: "1500 Fcfa", 
     image: "/burger.jpg", // Remplace par le chemin de ton image
   },
   {
     id: 2,
     name: "Pizza Margherita",
     description: "Une pizza traditionnelle avec de la sauce tomate, mozzarella et basilic frais.",
-    price: "12 €",
+    price: "3000 Fcfa",
     image: "/pizza.jpg", // Remplace par le chemin de ton image
   },
   {
     id: 3,
     name: "Tacos Viande",
     description: "Tacos garni de viande marinée, fromage, légumes frais et sauce au choix.",
-    price: "9 €",
+    price: "2000 Fcfa",
     image: "/tacosviande.jpg", // Remplace par le chemin de ton image
   },
   {
     id: 4,
     name: "Tacos Poulet",
     description: "Tacos garni de poulet grillé, fromage, légumes frais et sauce au choix.",
-    price: "9 €",
+    price: "2000 Fcfa",
     image: "/tacospoulet.jpg", // Remplace par le chemin de ton image
   },
   {
     id: 5,
     name: "Chawarma Viande",
     description: "Chawarma à la viande marinée, accompagné de légumes frais et de sauce à l'ail.",
-    price: "8 €",
+    price: "1700 fcfa",
     image: "/chawarmaviande.jpg", // Remplace par le chemin de ton image
   },
   {
     id: 6,
     name: "Chawarma Poulet",
     description: "Chawarma au poulet grillé, accompagné de légumes frais et de sauce à l'ail.",
-    price: "8 €",
+    price: "1700 Fcfa",
     image: "/chawarmapoulet.jpg", // Remplace par le chemin de ton image
   },
   {
     id: 7,
     name: "Fataya Complète",
     description: "Fataya garnie de viande hachée, œuf, légumes et épices, servie avec une sauce piquante.",
-    price: "7 €",
+    price: "500 Fcfa",
     image: "/fataya.jpg", // Remplace par le chemin de ton image
   },
   {
     id: 8,
     name: "Pizza Grande",
     description: "Pizza grande avec une variété de garnitures au choix : viande, légumes, fromage, etc.",
-    price: "15 €",
+    price: "5000 Fcfa",
     image: "/pizzagm.jpg", // Remplace par le chemin de ton image
   },
   {
     id: 9,
     name: "Poulet Pané",
     description: "Poulet pané croustillant accompagné de frites et de sauce au choix.",
-    price: "8 €",
+    price: "2500 Fcfa",
     image: "/pouletpanne.jpg", // Remplace par le chemin de ton image
   },
 ];
@@ -100,6 +101,10 @@ const PageFood = () => {
                 <h2 className="text-2xl font-bold text-white mb-2">{item.name}</h2>
                 <p className="text-muted-foreground mb-4">{item.description}</p>
                 <p className="text-primary font-semibold text-lg">{item.price}</p>
+                <Link href="/panier" className="flex items-center text-primary mt-4">
+                  <FaShoppingCart className="mr-2" />
+                  <span>Commander</span>
+                </Link>
               </div>
             </div>
           ))}
@@ -108,10 +113,10 @@ const PageFood = () => {
         {/* Bouton pour commander */}
         <div className="text-center mt-12">
           <Link
-            href="/commander"
+            href="/drinks"
             className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
           >
-            Commander maintenant
+            Nos Boissons
           </Link>
         </div>
       </div>

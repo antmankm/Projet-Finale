@@ -26,12 +26,7 @@ export default function Home() {
             <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto md:mx-0 text-white">
               Découvrez une expérience culinaire unique avec des plats préparés avec des ingrédients frais et locaux. Commandez dès maintenant et savourez nos délices !
             </p>
-            <Link
-              href="/menu"
-              className="bg-primary text-primary-foreground px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
-            >
-              menu
-            </Link>
+            
           </div>
           
         </div>
@@ -39,23 +34,9 @@ export default function Home() {
 
       {/* Section À propos */}
 
+      <AboutPage />
       
       
-      <footer className="bg-card py-8">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-white mb-4">
-            &copy; {new Date().getFullYear()} RAJAB KEUR MASSAR. Tous droits réservés.
-          </p>
-          <div className="flex justify-center space-x-4">
-            <Link href="/mentions-legales" className="text-white hover:text-primary">
-              Mentions légales
-            </Link>
-            <Link href="/politique-de-confidentialite" className="text-white hover:text-primary">
-              Politique de confidentialité
-            </Link>
-          </div>
-        </div>
-      </footer>
     </div>
     
   );

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FaPhone, FaClock, FaShoppingCart } from "react-icons/fa";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // État pour gérer l'ouverture/fermeture du menu
@@ -57,37 +58,31 @@ export default function Navbar() {
           <Link href="/drinks" className="text-white font-bold hover:text-yellow-500 transition-colors">
             Drinks
           </Link>
-          <Link href="/contact" className="text-white font-bold hover:text-yellow-500 transition-colors">
-            Contact
-          </Link>
         </div>
 
-        {/* Bouton Panier */}
+        {/* Icône Panier */}
         <Link
           href="/cart"
-          className="bg-primary text-primary-foreground px-5 py-1 rounded-lg hover:text-yellow-500 transition-colors text-sm"
+          className="text-white hover:text-yellow-500 transition-colors text-xl"
         >
-          Panier
+          <FaShoppingCart />
         </Link>
       </div>
 
       {/* Menu déroulant pour les petits écrans */}
       {isOpen && (
         <div className="md:hidden bg-card mt-2 pb-2">
-          <Link href="/" className="block px-4 py-2 text-white hover:bg-primary/10">
+          <Link href="/" className="block px-4 py-2 text-center font-bold text-white hover:bg-primary/10">
             Home
           </Link>
-          <Link href="/about" className="block px-4 py-2 text-white hover:bg-primary/10">
+          <Link href="/about" className="block px-4 py-2 text-center font-bold text-white hover:bg-primary/10">
             About
           </Link>
-          <Link href="/food" className="block px-4 py-2 text-white hover:bg-primary/10">
+          <Link href="/food" className="block px-4 py-2 text-center font-bold text-white hover:bg-primary/10">
             Food
           </Link>
-          <Link href="/drinks" className="block px-4 py-2 text-white hover:bg-primary/10">
+          <Link href="/drinks" className="block px-4 py-2 text-center font-bold text-white hover:bg-primary/10">
             Drinks
-          </Link>
-          <Link href="/contact" className="block px-4 py-2 text-white hover:bg-primary/10">
-            Contact
           </Link>
         </div>
       )}
