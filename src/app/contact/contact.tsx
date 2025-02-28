@@ -2,10 +2,10 @@ import React from 'react'
 
 type Props = {}
 
-const contact = (props: Props) => {
+const Pagecontact = (props: Props) => {
   return (
-    <div>contact</div>
+    <div>Page</div>
   )
 }
 
-export default contact
+export default Pagecontact

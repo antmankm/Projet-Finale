@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import aboutpage from "./about/page2";
+import AboutPage from "./about/page";
 import { Card } from "@/components/ui/card";
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
               href="/menu"
               className="bg-primary text-primary-foreground px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
             >
-              Menu
+              menu
             </Link>
           </div>
           
@@ -38,8 +38,24 @@ export default function Home() {
       </section>
 
       {/* Section À propos */}
-      
 
+      
+      
+      <footer className="bg-card py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-white mb-4">
+            &copy; {new Date().getFullYear()} RAJAB KEUR MASSAR. Tous droits réservés.
+          </p>
+          <div className="flex justify-center space-x-4">
+            <Link href="/mentions-legales" className="text-white hover:text-primary">
+              Mentions légales
+            </Link>
+            <Link href="/politique-de-confidentialite" className="text-white hover:text-primary">
+              Politique de confidentialité
+            </Link>
+          </div>
+        </div>
+      </footer>
     </div>
     
   );

@@ -55,3 +55,26 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
+
+// components/AddToCartButton.tsx
+"use client"; // Marque ce composant comme un Client Component
+
+import { FaShoppingCart } from "react-icons/fa";
+
+interface AddToCartButtonProps {
+  onClick: () => void;
+}
+
+const AddToCartButton = ({ onClick }: AddToCartButtonProps) => {
+  return (
+    <button
+      onClick={onClick}
+      className="w-full flex items-center justify-center bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors"
+    >
+      <FaShoppingCart className="mr-2" /> {/* Icône du panier */}
+      Ajouter au panier
+    </button>
+  );
+};
+
+export default AddToCartButton;
