@@ -62,7 +62,7 @@ export default function Navbar() {
 
         {/* Icône Panier */}
         <Link
-          href="/cart"
+          href="/panier"
           className="text-white hover:text-yellow-500 transition-colors text-xl"
         >
           <FaShoppingCart />

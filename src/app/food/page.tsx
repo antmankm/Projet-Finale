@@ -1,7 +1,11 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaPhone, FaClock, FaShoppingCart } from "react-icons/fa";
+import { useCart } from "../../components/ui/CartContext";
+
+
 
 // Données des menus de nourriture (tu peux les remplacer par des données dynamiques)
 const foodItems = [
@@ -71,22 +75,21 @@ const foodItems = [
 ];
 
 const PageFood = () => {
+  const { addToCart } = useCart();
+
   return (
     <div className="min-h-screen bg-background py-12">
       <div className="container mx-auto px-4">
-        {/* Titre de la page */}
         <h1 className="text-4xl md:text-5xl font-bold text-center text-white mb-8">
-          Nos Menus de Nourriture
+          Nos Menus 
         </h1>
 
-        {/* Grille des menus de nourriture */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {foodItems.map((item) => (
             <div
               key={item.id}
               className="bg-card rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300"
             >
-              {/* Image du menu */}
               <div className="relative h-48 w-full">
                 <Image
                   src={item.image}
@@ -96,21 +99,30 @@ const PageFood = () => {
                 />
               </div>
 
-              {/* Contenu de la carte */}
               <div className="p-6">
                 <h2 className="text-2xl font-bold text-white mb-2">{item.name}</h2>
                 <p className="text-muted-foreground mb-4">{item.description}</p>
                 <p className="text-primary font-semibold text-lg">{item.price}</p>
-                <Link href="/panier" className="flex items-center text-primary mt-4">
+                <button
+                  onClick={() =>
+                    addToCart({
+                      id: item.id,
+                      name: item.name,
+                      price: parseInt(item.price.replace(/\D/g, "")),
+                      image: item.image,
+                      quantity: 1,
+                    })
+                  }
+                  className="flex items-center text-primary mt-4"
+                >
                   <FaShoppingCart className="mr-2" />
                   <span>Commander</span>
-                </Link>
+                </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Bouton pour commander */}
         <div className="text-center mt-12">
           <Link
             href="/drinks"

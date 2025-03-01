@@ -46,7 +46,7 @@ export default function AboutPage() {
       <div className="bg-card p-6 rounded-lg shadow-lg flex flex-col items-center">
         <div className="relative w-32 h-32 mb-4">
           <Image
-            src="/team/chef1.jpg" // Chemin de la photo du chef
+            src="/team/ekip2.jpg" // Chemin de la photo du chef
             alt="Chef Marie"
             fill
             className="rounded-full object-cover"
@@ -62,7 +62,7 @@ export default function AboutPage() {
       <div className="bg-card p-6 rounded-lg shadow-lg flex flex-col items-center">
         <div className="relative w-32 h-32 mb-4">
           <Image
-            src="/team/manager.jpg" // Chemin de la photo du manager
+            src="/team/ekip1.jpg" // Chemin de la photo du manager
             alt="Manager Abou"
             fill
             className="rounded-full object-cover"
@@ -78,7 +78,7 @@ export default function AboutPage() {
       <div className="bg-card p-6 rounded-lg shadow-lg flex flex-col items-center">
         <div className="relative w-32 h-32 mb-4">
           <Image
-            src="/team/sommelier.jpg" // Chemin de la photo du sommelier
+            src="/team/ekip3.jpg" // Chemin de la photo du sommelier
             alt="Sommelier Fatou"
             fill
             className="rounded-full object-cover"
