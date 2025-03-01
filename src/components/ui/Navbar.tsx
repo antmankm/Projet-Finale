@@ -3,10 +3,12 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaPhone, FaClock, FaShoppingCart } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
+import { useCart } from "@/components/ui/CartContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // État pour gérer l'ouverture/fermeture du menu
+  const { totalItems } = useCart(); // Récupérer le nombre total d'articles dans le panier
 
   return (
     <nav className="w-full bg-card border-b border-border">
@@ -20,7 +22,9 @@ export default function Navbar() {
             height={50}
             className="rounded-full"
           />
-          <h1 className="text-xl font-bold ml-2 text-white"><span className="text-yellow-500 font-bold">RAJAB</span> KEUR MASSAR</h1>
+          <h1 className="text-xl font-bold ml-2 text-white">
+            <span className="text-yellow-500 font-bold">RAJAB</span> KEUR MASSAR
+          </h1>
         </Link>
 
         {/* Bouton Hamburger pour les petits écrans */}
@@ -60,12 +64,18 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Icône Panier */}
+        {/* Icône Panier avec le nombre d'articles */}
         <Link
           href="/panier"
-          className="text-white hover:text-yellow-500 transition-colors text-xl"
+          className="text-white hover:text-yellow-500 transition-colors text-xl relative"
         >
           <FaShoppingCart />
+          {/* Badge pour afficher le nombre d'articles */}
+          {totalItems > 0 && (
+            <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-500 text-white text-xs rounded-full px-2 py-1">
+              {totalItems}
+            </span>
+          )}
         </Link>
       </div>
 

@@ -67,20 +67,20 @@ const PageDrinks = () => {
                 <p className="text-muted-foreground mb-4">{item.description}</p>
                 <p className="text-primary font-semibold text-lg">{item.price}</p>
                 <button
-                  onClick={() =>
-                    addToCart({
-                      id: item.id,
-                      name: item.name,
-                      price: parseInt(item.price.replace(/\D/g, "")),
-                      image: item.image,
-                      quantity: 1,
-                    })
-                  }
-                  className="flex items-center text-primary mt-4"
-                >
-                  <FaShoppingCart className="mr-2" />
-                  <span>Commander</span>
-                </button>
+               onClick={() =>
+               addToCart({
+               id: item.id,
+               name: item.name,
+               price: parseInt(item.price.replace(/\D/g, "")),
+               image: item.image,
+               quantity: 1,
+    })
+  }
+  className="flex items-center text-primary mt-4"
+>
+  <FaShoppingCart className="mr-2" />
+  <span>Commander</span>
+</button>
               </div>
             </div>
           ))}

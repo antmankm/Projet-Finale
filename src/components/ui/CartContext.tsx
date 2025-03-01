@@ -15,12 +15,16 @@ type CartContextType = {
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
+  totalItems: number; 
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  // Calculer le nombre total d'articles dans le panier
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const addToCart = (item: CartItem) => {
     const existingItem = cartItems.find((cartItem) => cartItem.id === item.id);
@@ -50,7 +54,9 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity, totalItems }}
+    >
       {children}
     </CartContext.Provider>
   );

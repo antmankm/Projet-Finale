@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
-import { CartProvider } from "../components/ui/CartContext"; // Assurez-vous que le chemin est correct
+import { CartProvider } from "../components/ui/CartContext"; 
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,11 +27,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} font-sans bg-background text-foreground`}>
-        {/* Barre de navigation */}
-        <Navbar />
-
-        {/* Envelopper le contenu principal avec CartProvider */}
+        
         <CartProvider>
+          {/* Barre de navigation */}
+          <Navbar />
+
           {/* Contenu principal */}
           {children}
         </CartProvider>
