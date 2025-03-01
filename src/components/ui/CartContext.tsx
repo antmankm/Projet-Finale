@@ -15,7 +15,8 @@ type CartContextType = {
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
-  totalItems: number; 
+  totalItems: number;
+  clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -23,7 +24,6 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Calculer le nombre total d'articles dans le panier
   const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const addToCart = (item: CartItem) => {
@@ -53,9 +53,13 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     );
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, totalItems }}
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity, totalItems, clearCart }}
     >
       {children}
     </CartContext.Provider>
