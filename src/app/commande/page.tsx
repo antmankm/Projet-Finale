@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useCart } from "../../components/ui/CartContext";
-import { motion } from "framer-motion"; // Import de framer-motion pour les animations
+import { motion } from "framer-motion";
 
 const CommandePage = () => {
   const { cartItems, clearCart } = useCart();
@@ -13,7 +13,7 @@ const CommandePage = () => {
     email: "", // E-mail optionnel
     address: "",
     phone: "",
-    paymentMethod: "livraison", // Par défaut, le paiement à la livraison est sélectionné
+    paymentMethod: "livraison", 
   });
 
   const [loading, setLoading] = useState(false);
@@ -35,29 +35,6 @@ const CommandePage = () => {
     try {
       const total = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
-      if (formData.paymentMethod === "orange_money") {
-        const response = await fetch("/api/payment/orangeMoney", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            amount: total,
-            phone: formData.phone,
-            description: `Commande ${cartItems.map((item) => item.name).join(", ")}`,
-            email: formData.email || null, // E-mail optionnel
-          }),
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Erreur lors du paiement");
-        }
-
-        console.log("Paiement réussi:", data);
-      }
-
       // Stocker les données du client dans le localStorage
       localStorage.setItem("clientData", JSON.stringify({
         firstName: formData.firstName,
@@ -67,6 +44,15 @@ const CommandePage = () => {
         phone: formData.phone,
         paymentMethod: formData.paymentMethod,
       }));
+
+      if (formData.paymentMethod === "maxit") {
+        // Afficher les instructions pour payer via Maxit
+        alert("Veuillez effectuer le paiement via l'application Maxit en utilisant les informations suivantes :\n\n" +
+              `Montant : ${total} Fcfa\n` +
+              `Numéro de téléphone : 77 123 45 67\n` +
+              "Description : Commande");
+        return; // Arrêter l'exécution pour éviter de vider le panier immédiatement
+      }
 
       // Vider le panier après la commande
       clearCart();
@@ -84,9 +70,9 @@ const CommandePage = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }} // Animation initiale : invisible et légèrement décalée vers le bas
-      animate={{ opacity: 1, y: 0 }} // Animation d'entrée : apparaître et se déplacer vers le haut
-      transition={{ duration: 0.5 }} // Durée de l'animation
+      initial={{ opacity: 0, y: 20 }} 
+      animate={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 0.5 }} 
       className="min-h-screen bg-background py-12"
     >
       <div className="container mx-auto px-4">
@@ -189,29 +175,32 @@ const CommandePage = () => {
                 required
               >
                 <option value="livraison">Paiement à la livraison</option>
-                <option value="orange_money">Paiement en ligne via Orange Money</option>
+                <option value="maxit">Paiement en ligne via Maxit</option>
               </select>
             </div>
 
-            {formData.paymentMethod === "orange_money" && (
+            {formData.paymentMethod === "maxit" && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }} // Animation initiale : invisible et légèrement décalée vers le bas
-                animate={{ opacity: 1, y: 0 }} // Animation d'entrée : apparaître et se déplacer vers le haut
-                transition={{ duration: 0.3 }} // Durée de l'animation
+                initial={{ opacity: 0, y: 10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.3 }} 
                 className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4"
               >
                 <p>
-                  Pour payer via Orange Money, veuillez effectuer le transfert au numéro suivant :{" "}
-                  <strong>77 123 45 67</strong>. Indiquez votre numéro de commande dans la description du transfert.
+                  Pour payer via Maxit, veuillez effectuer le transfert au numéro suivant :{" "}
+                  <strong>77 889 04 15</strong>. Indiquez votre numéro de commande dans la description du transfert.
+                </p>
+                <p className="mt-2">
+                  Montant à payer : <strong>{total} Fcfa</strong>.
                 </p>
               </motion.div>
             )}
 
             {error && (
               <motion.div
-                initial={{ opacity: 0, y: 10 }} // Animation initiale : invisible et légèrement décalée vers le bas
-                animate={{ opacity: 1, y: 0 }} // Animation d'entrée : apparaître et se déplacer vers le haut
-                transition={{ duration: 0.3 }} // Durée de l'animation
+                initial={{ opacity: 0, y: 10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.3 }} 
                 className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4"
               >
                 <p>{error}</p>
@@ -223,8 +212,8 @@ const CommandePage = () => {
                 Total : {total} Fcfa
               </h2>
               <motion.button
-                whileHover={{ scale: 1.05 }} // Animation au survol : légèrement agrandir le bouton
-                whileTap={{ scale: 0.95 }} // Animation au clic : légèrement réduire le bouton
+                whileHover={{ scale: 1.05 }} 
+                whileTap={{ scale: 0.95 }} 
                 type="submit"
                 disabled={loading}
                 className="w-full bg-primary text-primary-foreground px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"

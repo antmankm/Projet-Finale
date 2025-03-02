@@ -27,13 +27,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} font-sans bg-background text-foreground`}>
-        
         <CartProvider>
           {/* Barre de navigation */}
           <Navbar />
 
-          {/* Contenu principal */}
-          {children}
+          {/* Contenu principal avec une marge en haut pour compenser la hauteur de la Navbar */}
+          <main className="pt-20"> {/* Ajout de pt-16 pour compenser la hauteur de la Navbar */}
+            {children}
+          </main>
         </CartProvider>
       </body>
     </html>

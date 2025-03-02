@@ -11,7 +11,8 @@ export default function Navbar() {
   const { totalItems } = useCart(); // Récupérer le nombre total d'articles dans le panier
 
   return (
-    <nav className="w-full bg-card border-b border-border">
+    <nav className="w-full bg-card border-b border-border fixed top-0 left-0 z-50">
+      {/* Ajout de fixed, top-0, left-0 et z-50 pour fixer la Navbar en haut et la placer au-dessus des autres éléments */}
       <div className="container mx-auto flex items-center justify-between px-2 py-1">
         {/* Logo et nom du restaurant */}
         <Link href="/" className="flex items-center">
