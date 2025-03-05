@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaPhone, FaClock, FaStar, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaPhone, FaClock, FaStar, FaSun, FaMoon } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function AboutPage() {
@@ -220,38 +220,89 @@ export default function AboutPage() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="bg-background py-12"
+        className="bg-gradient-to-r from-primary/10 to-background py-12"
       >
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-white mb-8 text-center">Horaires d'ouverture</h2>
+          <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            Horaires d'ouverture
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Horaires en semaine */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="bg-card p-6 rounded-lg shadow-lg"
+              className="bg-card p-6 rounded-lg shadow-lg border-l-4 border-primary cursor-pointer"
             >
-              <p className="text-lg text-white mb-2 flex items-center">
-                <FaClock className="mr-2 text-primary text-2xl" />
-                Lundi - Vendredi : 10h - 22h
-              </p>
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                <FaSun className="mr-2 text-primary text-2xl animate-pulse" />
+                Horaires en semaine
+              </h3>
+              <div className="space-y-2">
+                <p className="text-lg text-white flex items-center">
+                  <FaClock className="mr-2 text-primary text-2xl" />
+                  Lundi - Vendredi : 10h - 22h
+                </p>
+                <p className="text-lg text-white flex items-center">
+                  <FaSun className="mr-2 text-primary text-2xl" />
+                  Ouverture : 10h
+                </p>
+                <p className="text-lg text-white flex items-center">
+                  <FaMoon className="mr-2 text-primary text-2xl" />
+                  Fermeture : 22h
+                </p>
+              </div>
             </motion.div>
+
             {/* Horaires le week-end */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               viewport={{ once: true }}
-              className="bg-card p-6 rounded-lg shadow-lg"
+              className="bg-card p-6 rounded-lg shadow-lg border-l-4 border-secondary cursor-pointer"
             >
-              <p className="text-lg text-white flex items-center">
-                <FaClock className="mr-2 text-primary text-2xl" />
-                Samedi - Dimanche : 12h - 23h
-              </p>
+              <h3 className="text-xl font-bold text-white mb-4 flex items-center">
+                <FaMoon className="mr-2 text-secondary text-2xl animate-pulse" />
+                Horaires le week-end
+              </h3>
+              <div className="space-y-2">
+                <p className="text-lg text-white flex items-center">
+                  <FaClock className="mr-2 text-secondary text-2xl" />
+                  Samedi - Dimanche : 12h - 23h
+                </p>
+                <p className="text-lg text-white flex items-center">
+                  <FaSun className="mr-2 text-secondary text-2xl" />
+                  Ouverture : 12h
+                </p>
+                <p className="text-lg text-white flex items-center">
+                  <FaMoon className="mr-2 text-secondary text-2xl" />
+                  Fermeture : 23h
+                </p>
+              </div>
             </motion.div>
           </div>
+
+          {/* Timeline visuelle */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            viewport={{ once: true }}
+            className="mt-8 flex flex-col space-y-4 items-center"
+          >
+            <div className="flex items-center space-x-4">
+              <div className="w-4 h-4 bg-primary rounded-full"></div>
+              <p className="text-lg text-white">Lundi - Vendredi : 10h - 22h</p>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="w-4 h-4 bg-secondary rounded-full"></div>
+              <p className="text-lg text-white">Samedi - Dimanche : 12h - 23h</p>
+            </div>
+          </motion.div>
         </div>
       </motion.section>
 
