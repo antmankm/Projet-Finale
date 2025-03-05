@@ -65,9 +65,9 @@ const PanierPage = () => {
           </h2>
           <Link
             href="/commande"
-            className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/90 transition-colors"
+            className="inline-block bg-transparent border border-primary text-primary px-8 py-3 rounded-lg text-lg font-semibold hover:bg-primary/10 transition-all transform hover:scale-105"
           >
-            Passer la commande
+            Valider la commande
           </Link>
         </div>
       </div>
